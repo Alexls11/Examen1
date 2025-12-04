@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - Sistema de Turnos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .registro-container {
+            width: 400px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 22px;
+            font-size: 22px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 14px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #43a047;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2e7d32;
+        }
+
+        .mensaje {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .error {
+            color: #c62828;
+        }
+
+        .ok {
+            color: #2e7d32;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="registro-container">
+        <h1>Registro de usuario</h1>
+
+        <form id="registroForm">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Ingresa tu nombre" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" placeholder="Ingresa tu apellido" required>
+
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" placeholder="18+" required>
+
+            <label for="domicilio">Domicilio</label>
+            <input type="text" id="domicilio" placeholder="Ingresa tu domicilio" required>
+
+            <button type="submit">Registrar</button>
+        </form>
+
+        <div id="mensaje" class="mensaje"></div>
+
+        <div class="login-link">
+            ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("registroForm");
+        const mensaje = document.getElementById("mensaje");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value.trim();
+            const apellido = document.getElementById("apellido").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const edad = parseInt(document.getElementById("edad").value);
+            const domicilio = document.getElementById("domicilio").value.trim();
+
+            if (edad < 18) {
+                mensaje.textContent = "Debe ser mayor de 18 años para registrarse.";
+                mensaje.className = "mensaje error";
+                return;
+            }
+
+            // Simulación de guardar datos
+            mensaje.textContent = "Registro exitoso. Se ha enviado su contraseña al correo.";
+            mensaje.className = "mensaje ok";
+
+            // Simula el “envío de contraseña” y luego redirige al login
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>

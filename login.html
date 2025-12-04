@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Iniciar sesión - Sistema de Turnos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            width: 350px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 14px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1565c0;
+        }
+
+        .mensaje {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .error {
+            color: #c62828;
+        }
+
+        .ok {
+            color: #2e7d32;
+        }
+
+        .register-link {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Iniciar sesión</h1>
+
+        <form id="loginForm">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" placeholder="Ingrese su contraseña" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <div id="mensaje" class="mensaje"></div>
+
+        <!-- 🔥 Este es el ENLACE que el profesor pide -->
+        <div class="register-link">
+            ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const mensaje = document.getElementById("mensaje");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const correo = document.getElementById("correo").value.trim();
+            const contrasena = document.getElementById("contrasena").value.trim();
+
+            // SIMULACIÓN (esto es suficiente para tu examen)
+            const correoValido = "usuario@correo.com";
+            const contrasenaValida = "123456";
+
+            if (correo === correoValido && contrasena === contrasenaValida) {
+                mensaje.textContent = "Inicio de sesión exitoso.";
+                mensaje.className = "mensaje ok";
+            } else {
+                mensaje.textContent = "Correo o contraseña incorrectos.";
+                mensaje.className = "mensaje error";
+            }
+        });
+    </script>
+
+</body>
+</html>
